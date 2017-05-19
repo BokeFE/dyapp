@@ -1,0 +1,22 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="myOrder"></button>
+        <div class="title">录入处理结果</div>
+    </ion-header-bar>
+    <ion-content class="disposeOrder">
+        <div class="tips padding2 text-center">请如实填写贷款处理的结果，提交后不可修改</div>
+        <div class="padding2 cd-bgWhite">
+            <div class="list">
+                <div>
+                    <label>处理结果：</label>
+                    <button class="button button-small button-balanced cd-bgGreen" ng-click="changeDisStatus('1')" ng-class="{'curr':status==1}">通过</button>
+                    <button class="button button-small button-assertive" ng-click="changeDisStatus('2')" ng-class="{'curr':status==2}">拒绝</button>
+                </div>
+            </div>
+            <textarea placeholder="备注，请描述处理结果" maxlength="1000" ng-model="row.remark"></textarea>
+        </div>
+        <div class="padding2">
+            <button class="button button-block button-assertive" ng-click="submit()">提交</button>
+        </div>
+    </ion-content>
+</ion-pane>

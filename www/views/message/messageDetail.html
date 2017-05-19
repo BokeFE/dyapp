@@ -1,0 +1,64 @@
+<ion-pane>
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.message"></button>
+        <div class="title" ng-bind="name"></div>
+        <a class="button button-clear button-white iconfont icon-dianhua" href="tel:{{mobile | limitTo:-11}}"></a>
+    </ion-header-bar>
+    <ion-content class="messageDetail" ng-class="{'setContentFixed':chatTools==1}" ng-click="hideTools()">
+        <!--<ion-refresher pulling-text="..." on-refresh="doRefresh()" pulling-icon=""></ion-refresher>-->
+        <div ng-repeat="item in sds">
+            <p class="text-center" ng-if="item.timeFlag == 1"><span class="message-time" >{{item.timestamp | date:'yyyy-MM-dd HH:mm:ss' }}</span></p>
+
+            <div class="message-wrap" ng-if="item.from!==jid &&item.from!==null">
+                <img ng-src="{{item.fromHeadImage}}" class="head-pic">
+
+                <pre class="message"  ng-if="item.type!=='image'" ng-bind-html="item.content"></pre>
+
+                <pre class="message" ng-if="item.type=='image'" ><img ng-src="data:image/jpeg;base64,{{item.content}}" ng-click="magnify(item.content)"></pre>
+            </div>
+
+            <div class="message-wrap" ng-if="item.from==null">
+                <img ng-src="{{item.fromHeadImage}}" class="head-pic head-pic-right">
+
+                <pre class="message-right" ng-if="item.type!=='image'"  ng-bind-html="item.content"></pre>
+
+                <pre class="message-right" ng-if="item.type=='image'"><img ng-src="data:image/jpeg;base64,{{item.content}}" ng-click="magnify(item.content)"></pre>
+            </div>
+        </div>
+        <!-- -->
+
+        <!-- -->
+    </ion-content>
+    <!-- -->
+    <ion-footer-bar keyboard-attach align-title="left" class="bar-light message-footer cd-bgGray" id="chatBar" ng-class="{'setCharBarHeight':chatTools==1}" resize-foot-bar>
+        <!--<div class="footer-btn-wrap">-->
+        <!--<button class="button button-icon iconfont icon-yuyin1 footer-btn-left"  ng-if="isAudio==0" ng-click="changeSendType(1)"></button>-->
+        <!--<button class="button button-icon iconfont ion-ios-compose-outline footer-btn-left"  ng-if="isAudio==1"  ng-click="changeSendType(0)"></button>-->
+        <!--</div>-->
+        <label class="item item-input footer-input">
+            <textarea msd-elastic ng-model="currMsg.content" ng-if="isAudio==0" ng-click="showKeyboard()"></textarea>
+            <span class="button audioBtn" ng-bind="audioBtn" ng-if="isAudio==1" on-hold="getAudio()" on-release=""></span>
+        </label>
+
+        <div class="footer-btn-wrap">
+            <div class="buttons">
+                <button class="footer-btn button button-icon icon ion-ios-paperplane-outline" ng-click="sendMsg(0)" ng-if="showSend==1"></button>
+                <button class="button button-icon icon ion-ios-plus-outline footer-btn-left" ng-click="showTools()" ng-if="showSend==0"></button>
+            </div>
+        </div>
+    </ion-footer-bar>
+
+    <ion-footer-bar id="chatTools" class="cd-bgGray" ng-if="chatTools==1">
+        <div class="row">
+            <div class="col col-25" ng-click="changePicBy(0)">
+                <i class="iconfont icon-zhaopian"></i><br> 照片
+            </div>
+            <div class="col col-25" ng-click="changePicBy(1)">
+                <i class="iconfont icon-paizhao"></i><br>拍摄
+            </div>
+        </div>
+    </ion-footer-bar>
+    <div class="bigPicWrap" ng-if="showBigPic==1" ng-click="hideBigPic()">
+        <img ng-src="data:image/jpeg;base64,{{bigPicUrl}}">
+    </div>
+</ion-pane>

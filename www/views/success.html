@@ -1,0 +1,26 @@
+<ion-pane>
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.home"></button>
+        <div class="title">成功</div>
+    </ion-header-bar>
+    <ion-content class="success text-center padding2">
+        <i class="iconfont icon-chenggong cd-red"></i>
+        <div ng-if="num=='1'">
+        <h3 class="cd-red"><span ng-bind="telNum"></span>恭喜您注册成功</h3>
+            <h4>为了方便您抢单，请立即进行实名认证</h4>
+            <button class="button button-block cd-red button-light" ui-sref="identification">实名认证</button>
+            <button class="button button-block button-assertive" ui-sref="tab.home">稍后再说</button>
+        </div>
+        <div ng-if="num=='2'">
+            <h3 class="cd-red">恭喜您密码找回成功</h3>
+            <h4 ng-bind="telName">请牢记您的登录密码!</h4>
+            <button class="button button-block button-assertive" ui-sref="tab.home">回到首页</button>
+        </div>
+
+        <div ng-if="num=='3'">
+            <h3 class="cd-red">恭喜您抢单成功</h3>
+            <h4>请立即联系客户!</h4>
+            <button class="button button-block button-assertive" ng-click="talk()">立即联系</button>
+        </div>
+    </ion-content>
+</ion-pane>

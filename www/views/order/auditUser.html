@@ -1,0 +1,16 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ng-click="myGoBack()"></button>
+        <div class="title">相关审批部门设置</div>
+    </ion-header-bar>
+    <ion-content ng-class="{'has-footer':true}"  class="has-header scroll-content ionic-scroll">
+        <ion-list>
+            <ion-checkbox class="checkbox-assertive"  ng-repeat="item in items" ng-model="item.SELECTED">
+                {{item.LABEL}}
+            </ion-checkbox>
+        </ion-list>
+    </ion-content>
+    <div class="bar bar-footer bar-assertive text-center"    ng-disabled="btnDisabled" ng-click="submit()" >
+        <h1 class="title" style="color:#fff">确定</h1>
+    </div>
+</ion-pane>

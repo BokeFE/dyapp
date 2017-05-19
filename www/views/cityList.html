@@ -1,0 +1,51 @@
+<ion-pane>
+    <div class="bar bar-header bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ng-click="myGoBack()"></button>
+        <div class="title">选择城市</div>
+    </div>
+    <!-- -->
+    <ion-content class="scroll-content ionic-scroll  has-header cityList">
+        <div class="padding">
+            <h4>您当前城市</h4>
+            <span class="button button-small button-assertive padding-left padding-right" ng-bind="currCity" >获取中…</span>
+        </div>
+        <input ng-model="changeCity" ng-bind="changeCity" style="display:none;">
+        <div class="list">
+            <ul>
+                <li class="item" ng-repeat="x in items| cityFilter:changeCity  | orderBy:'pinyin'" ng-class="{'compact':checkCode(x.city)==1}">
+                    <span id="{{x.city}}" ng-if="checkCode(x.city)==1">{{x.city}}</span>
+                    <p ng-click="changeCurrCity($event)"  ng-if="checkCode(x.city)==2">{{x.city}}</p>
+                </li>
+
+            </ul>
+        </div>
+        <!-- -->
+        <!-- -->
+    </ion-content>
+</ion-pane>
+<div class="shortcutList">
+    <ul>
+        <li ng-click="changeVal($event)">A</li>
+        <li ng-click="changeVal($event)">B</li>
+        <li ng-click="changeVal($event)">C</li>
+        <li ng-click="changeVal($event)">D</li>
+        <li ng-click="changeVal($event)">E</li>
+        <li ng-click="changeVal($event)">F</li>
+        <li ng-click="changeVal($event)">G</li>
+        <li ng-click="changeVal($event)">H</li>
+        <li ng-click="changeVal($event)">J</li>
+        <li ng-click="changeVal($event)">K</li>
+        <li ng-click="changeVal($event)">L</li>
+        <li ng-click="changeVal($event)">M</li>
+        <li ng-click="changeVal($event)">N</li>
+        <li ng-click="changeVal($event)">P</li>
+        <li ng-click="changeVal($event)">Q</li>
+        <li ng-click="changeVal($event)">R</li>
+        <li ng-click="changeVal($event)">S</li>
+        <li ng-click="changeVal($event)">T</li>
+        <li ng-click="changeVal($event)">W</li>
+        <li ng-click="changeVal($event)">X</li>
+        <li ng-click="changeVal($event)">Y</li>
+        <li ng-click="changeVal($event)">Z</li>
+    </ul>
+</div>

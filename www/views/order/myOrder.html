@@ -1,0 +1,76 @@
+<ion-pane class="cd-bgGray myOrder">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.myAccount"></button>
+        <div class="title">我的订单</div>
+        <!--<button class="button button-clear button-white iconfont icon-sousuo" ui-sref="searchOrder"></button>-->
+    </ion-header-bar>
+    <ion-content>
+        <div class="partnerNav">
+            <div class="row">
+                <div class="col"  ng-class="{'curr':activated==0}" ng-click="changeStatus(0)">
+                    <i class="iconfont icon-chulizhong"></i>
+                    处理中
+                </div>
+                <div class="col"  ng-class="{'curr':activated==1}" ng-click="changeStatus(1)">
+                    <i class="iconfont icon-yifangkuan"></i>
+                    已放款
+                </div>
+                <div class="col"  ng-class="{'curr':activated==2}" ng-click="changeStatus(2)">
+                    <i class="iconfont icon-yifoudan"></i>
+                    已否单
+                </div>
+            </div>
+        </div>
+        <!-- -->
+            <div class="noData"  ng-if="rows.length==0">暂无订单</div>
+            <div class="myLoan margin2" ng-if="rows.length>0" ng-repeat="row in rows">
+
+            <header class="row" ng-click="dtl(row)" >
+                <div class="col col-33">
+                    <span class="span badge red outline"> {{row.use}}贷</span>
+                </div>
+                <div class="col text-right"  style="font-size:1.2rem;padding-top:10px;">
+                    <span class="span borderNone" style="font-size:1.2rem;"> 订单编号：<span class="cd-gray">{{row.code}}</span></span>
+                </div>
+            </header>
+            <div class="content row icon-red" ng-click="dtl(row)" >
+                <div class="col col-25 font-codelight">
+                    <span>{{(row.amount)|number}}</span>万
+                </div>
+                <div class="col">
+                    <label class="item  ">
+                        期限
+                        <em><span>{{row.period}}</span></em>
+                    </label>
+                    <label class="item  ">
+                        身份
+                        <em>{{row.identity}}</em>
+                    </label>
+                </div>
+
+                <div class="col">
+                    <label class="item  ">
+                        用&emsp;&emsp;&nbsp;途
+                        <em>{{row.use}}</em>
+                    </label>
+                    <label class="item  ">
+                        保障方式
+                        <em>{{row.ensure}}</em>
+                    </label>
+                </div>
+            </div>
+            <!-- -->
+            <footer class="row">
+                <div class="col">
+                   <span class="span borderNone"> {{row.createTime}}</span>
+                </div>
+                <div class="col text-right">
+                    <span class="span green" ui-sref="messageDetail" ng-click="talk(row.userXmppId,row.userName)">发消息</span>
+                    <span class="span blue"  ng-click="changeOrder(row.id)" ng-if="activated==0">处&emsp;理</span>
+                </div>
+            </footer>
+        </div>
+        <!-- -->
+        <ion-infinite-scroll ng-if="!noMoreData"  on-infinite="loadMore()"   distance="1%"></ion-infinite-scroll>
+    </ion-content>
+</ion-pane>

@@ -1,0 +1,44 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <!--<button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.myAccount"></button>-->
+        <div class="title">设置</div>
+    </ion-header-bar>
+    <ion-content class="margin2">
+        <div class="list icon-red">
+            <label class="item item-icon-left" ui-sref="about">
+                <i class="icon iconfont icon-guanyu"></i>
+                关于
+                <span class="item-note text-right ion-ios-arrow-right iconRight"></span>
+            </label>
+            <label class="item item-icon-left" ui-sref="feedback">
+                <i class="icon iconfont icon-yijianfankui"></i>
+                意见反馈
+                <span class="item-note text-right ion-ios-arrow-right iconRight"></span>
+            </label>
+            <a class="item item-icon-left" href="tel:07145392641" style="color:#444;">
+                <i class="icon iconfont icon-dianhua"></i>
+                客服热线
+                <span class="item-note text-right ion-ios-arrow-right iconRight">0714-5392641</span>
+            </a>
+            <label class="item item-icon-left" ng-click="clearCache()">
+                <i class="icon iconfont icon-qingchuhuancun"></i>
+                清除缓存
+                <span class="item-note text-right ion-ios-arrow-right iconRight"></span>
+            </label>
+            <!--<label class="item item-icon-left" ng-click="checkUpdate()">
+                <i class="icon iconfont icon-banbengengxin"></i>
+                版本更新
+                <span class="item-note text-right ion-ios-arrow-right iconRight">{{version}}</span>
+            </label>-->
+            <label class="item item-icon-left" ui-sref="changePass">
+                <i class="icon iconfont icon-xinmima"></i>
+                修改密码
+                <span class="item-note text-right ion-ios-arrow-right iconRight">修改</span>
+            </label>
+           
+        </div>
+        <div class="padding2">
+            <button class="button button-block button-assertive"  ng-click="logout()">退出登录</button>
+        </div>
+    </ion-content>
+</ion-pane>

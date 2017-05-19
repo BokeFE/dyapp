@@ -1,0 +1,49 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <div class="title">我的</div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="growthBanner text-center">
+            <img ng-src="{{agentUser.imageUrl}}" name="myHeaderImg" ng-click="changeHeaderImg()" />
+            <div class="row" ng-if="agentUser.status==2">
+                <div class="col text-center" ng-model="agentUser.realName" style="font-size:1.6rem;">{{agentUser.realName}}</div>
+            </div>
+            <div class="row" ng-if="agentUser.status==2">
+                <div class="col text-center" ng-model="agentUser.companyName">{{agentUser.companyName}}</div>
+            </div>
+            <div class="row" ng-if="agentUser.status!=2">
+                <div class="col text-center" style="border:none;">{{agentUser.tel}}</div>
+            </div>
+        </div>
+        <!-- -->
+        <div class="list icon-red margin2">
+            <label class="item item-icon-left" ui-sref="myOrder">
+                <i class="icon iconfont icon-banlitiaojian"></i>
+                我的订单
+                <span class="item-note text-right ion-ios-arrow-right iconRight">{{orderCount}}</span>
+            </label>
+            <label class="item item-icon-left" ui-sref="identification">
+                <i class="icon iconfont icon-shimingrenzheng"></i>
+                实名认证
+                <span class="item-note text-right ion-ios-arrow-right iconRight" ng-bind=""><label ng-if="agentUser.status!=2">未实名认证</label></span>
+            </label>
+            <label class="item item-icon-left" ui-sref="description">
+                <i class="icon iconfont icon-xingming"></i>
+                个人描述
+                <span class="item-note text-right ion-ios-arrow-right iconRight" ng-bind=""></span>
+            </label>
+            <label class="item item-icon-left" ui-sref="city">
+                <i class="icon iconfont icon-chengshi"></i>
+                订单推送城市
+                <span class="item-note text-right ion-ios-arrow-right iconRight" ui-sref="city" ng-bind="currCity">武汉</span>
+            </label>
+
+            <label class="item item-icon-left" ui-sref="setting">
+                <i class="icon iconfont icon-shezhi"></i>
+                设置
+                <span class="item-note text-right ion-ios-arrow-right iconRight"></span>
+            </label>
+
+        </div>
+    </ion-content>
+</ion-pane>

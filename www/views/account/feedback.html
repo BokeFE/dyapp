@@ -1,0 +1,10 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.setting"></button>
+        <div class="title">意见反馈</div>
+    </ion-header-bar>
+    <ion-content class="feedback padding2 ">
+        <textarea placeholder="请写下您宝贵的意见或建议（100字以内）" maxlength="100" name="content" ng-model="data.content"></textarea>
+        <button class="button button-block button-assertive" ng-click="submitOpinion()">提交</button>
+    </ion-content>
+</ion-pane>

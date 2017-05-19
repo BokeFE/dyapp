@@ -1,0 +1,29 @@
+
+{
+  "head":{
+    "status":1
+  },
+  "body":{
+    "doingList":
+    [
+      {"zhidanren":"张三",
+        "shuliang":1000,
+        "billdate":"2017-03-01",
+        "no":"WLDD201703001",
+        "org":"大冶有色物流",
+        "billid":268774,
+        "huozhu":"大冶有色",
+        "type":1
+      },
+      {"zhidanren":"李四",
+        "shuliang":1300,
+        "billdate":"2017-03-01",
+        "no":"WLDD201703002",
+        "org":"大冶有色物流",
+        "billid":268774,
+        "huozhu":"大冶有色",
+        "type":2
+      }
+    ]
+  }
+}

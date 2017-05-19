@@ -1,0 +1,77 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui"  ng-click="myGoBack()"></button>
+        <div class="title">订单详情</div>
+    </ion-header-bar>
+    <ion-content ng-class="{'has-footer':true}">
+        <!-- -->
+        <div class="item indexGrid icon-red">
+            <div class="row">
+                <div class="col ">
+                    <div class="item-avatar">
+                        <img src="images/transport.png">
+                        <h2> <i class="iconfont icon-zaixianshenqing"></i>订单号 {{curOrder.orderNo}}</h2>
+                        <p><i class="iconfont icon-qianshuhetong"></i>合同号 <span>{{curOrder.hetonghao}}万</span></p>
+                        <p><i class="iconfont icon-daikuanqixian"></i>业务日期 <span>{{curOrder.billdate}}</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    供应商
+                    <span>{{curOrder.gongyingshang}}</span>
+                </div>
+                <div class="col">
+                    客户
+                    <span>{{curOrder.wanglaihu}}</span>
+                </div>
+                <div class="col">
+                    订单类型
+                    <span>{{curOrder.orderType}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 明细信息-->
+
+
+        <div  class="list  loanDetailList">
+
+            <label class="item item-icon-left cd-red">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgRed"></i>
+                物料信息
+            </label>
+            <label class="item item-icon-left">
+                {{curOrder.wuliao}}
+                <span class="item-note text-right"><label>{{curOrder.shuliang}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                当前状态
+                <span class="item-note text-right"><label>{{curOrder.zhuangtai}}</label></span>
+            </label>
+        </div>
+
+        <div  class="list margin2 loanDetailList">
+            <label class="item item-icon-left cd-red">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgRed"></i>
+                执行情况
+            </label>
+            <label class="item item-icon-left">
+                执行机构
+                <span class="item-note text-right"><label>{{curOrder.jigou1}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                完成比例
+                <span class="item-note text-right"><label>{{curOrder.wangcheng1}}%</label></span>
+            </label>
+            <label class="item item-icon-left">
+                完成数量
+                <span class="item-note text-right"><label>{{curOrder.shuliang1}}</label></span>
+            </label>
+
+        </div>
+
+    </ion-content>
+
+</ion-pane>

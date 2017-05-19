@@ -1,0 +1,100 @@
+<ion-pane class="cd-bgGray">
+    <div class="bar bar-header bar-cd">
+        <div class="title">大冶有色物流</div>
+    </div>
+
+    <ion-content class="has-header scroll-content ionic-scroll">
+        <div class="partnerNav">
+            <div class="row">
+                <div class="col" ng-click="getList(1)"   ng-class="{'curr':activated==1}" >
+                    <i class="iconfont icon-qiangdanzhong"></i>
+                    订单审批
+                </div>
+                <div class="col"  ng-click="getList(2)"  ng-class="{'curr':activated==2}">
+                    <i class="iconfont icon-quanbu"></i>
+                    合同审批
+                </div>
+            </div>
+        </div>
+
+        <!-- -->
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div  class="noData" ng-if="activated==1 && doingList.length==0">暂无待办任务</div>
+        <div ng-if="activated==1"  ng-repeat="row in doingList" >
+            <div class="item indexGrid icon-red margin2 " ng-click="viewDtl(row)" >
+                <div class="row item-button-right">
+                    <div class="col col-67">
+                        <div class="item-avatar">
+                            <img ng-if="row.type==2" src="images/order.png">
+                            <img ng-if="row.type==3" src="images/transport.png">
+                            <img ng-if="row.type==1" src="images/check.png">
+                            <p style="padding-top:15px"><i class="iconfont icon-qiangdanzhong"></i><span>{{row.no}}</span></p>
+                            <p><i class="iconfont icon-suoxucailiao"></i><span>{{row.zhuangtai}}</span></p>
+                            <p><i class="iconfont icon-daikuanqixian"></i> <span>{{row.billdate}}</span></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                            <span class="item-note ">
+                              <p> </p>
+                            </span>
+                    </div>
+                    <button class="button button-balanced cd-bgGreen" ng-click="viewDtl()"  ng-if="row.status<2" style="padding-left:20px;padding-right:20px;" >处理</button>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        货主
+                        <span>{{row.huozhu}}</span>
+                    </div>
+                    <div class="col">
+                        制单人
+                        <span>{{row.zhidanren}}</span>
+                    </div>
+                    <div class="col">
+                        数量
+                        <span>{{row.shuliang}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="noData" ng-if="activated==2 && (!allList || allList.length==0)">暂无待办任务</div>
+        <div ng-if="activated==2"  ng-repeat="row in allList" >
+            <div class="item indexGrid icon-red margin2 " ng-click="contractDtl(row)" >
+                <div class="row item-button-right">
+                    <div class="col col-67">
+                        <div class="item-avatar">
+                            <img src="images/check.png" style="left:10px">
+                            <p style="padding-top:15px"><i class="iconfont icon-qiangdanzhong"></i><span>{{row.workitemdesc}}</span></p>
+                            <p><i class="iconfont icon-suoxucailiao"></i><span>{{row.BillNo}}</span></p>
+                            <p><i class="iconfont icon-daikuanqixian"></i> <span>{{row.appDate}}</span></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                            <span class="item-note ">
+                              <p> </p>
+                            </span>
+                    </div>
+                    <button class="button button-balanced cd-bgGreen" ng-click="contractDtl(row)"  style="padding-left:20px;padding-right:20px;" >处理</button>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        提交人
+                        <span>{{row.applicant}}</span>
+                    </div>
+                    <div class="col">
+                        合同名称
+                        <span>{{row.hetongmingcheng}}</span>
+                    </div>
+                    <div class="col">
+                        合同金额
+                        <span>{{row.hetongjine}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+                    <!--<ion-infinite-scroll ng-if="!noMoreData"  on-infinite="loadMore()"   distance="1%"></ion-infinite-scroll>-->
+    </ion-content>
+</ion-pane>

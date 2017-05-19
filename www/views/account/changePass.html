@@ -1,0 +1,22 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.setting"></button>
+        <div class="title">修改密码</div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list margin2">
+            <div class="item item-input">
+                <input type="password" placeholder="输入原密码" maxlength="16" name="oldpwd" ng-model="user.oldpwd" required>
+            </div>
+            <label class="item item-input">
+                <input type="password" placeholder="请输入6-16位且字母加数字的新密码" maxlength="16" id="pwd" name="pwd" ng-model="user.pwd">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="确认新密码" maxlength="16" id="pwd1" name="pwd1" ng-model="user.pwd1">
+            </label>
+            <div style="padding:20px;">
+                <button class="button button-assertive button-block cd-bgRed" ng-click="updPwd()">确定</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-pane>

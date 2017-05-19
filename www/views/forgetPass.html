@@ -1,0 +1,33 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="login"></button>
+        <div class="title">找回密码</div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <!---->
+        <div class="list margin2 icon-red">
+            <label class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-shouji"></i>
+                <input type="tel" placeholder="输入绑定的手机号码" maxlength="11" pattern="[0-9]*" name="tel" ng-model="user.tel">
+            </label>
+            <div class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-duanxin"></i>
+                <input type="tel" placeholder="输入短信验证码" maxlength="6" pattern="[0-9]*" name="sms" ng-model="user.sms" required>
+                <button class="getSmsCode button button-outline button-small" ng-class="paraclass" ng-bind="paracont" ng-disabled="disabled" ng-click="sendSmsCode()">获取验证码</button>
+            </div>
+            <label class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-mima"></i>
+                <input type="password" placeholder="请输入6-16位且字母加数字的新密码" maxlength="16" id="pwd" name="pwd" ng-model="user.pwd">
+            </label>
+            <label class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-mima"></i>
+                <input type="password" placeholder="确认新密码" maxlength="16" id="pwd1" name="pwd1" ng-model="user.pwd1">
+            </label>
+
+            <div style="padding:20px;">
+                <button class="button button-assertive button-block cd-bgRed" ng-click="findPwd()">确定</button>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-pane>

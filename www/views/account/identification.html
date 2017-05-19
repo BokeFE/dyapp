@@ -1,0 +1,44 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.myAccount"></button>
+        <div class="title">实名认证</div>
+    </ion-header-bar>
+
+    <ion-content>
+        <div class="list margin2" >
+            <label class="item item-divider">
+                个人信息
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="请输入真实姓名" maxlength="6" name="realName" ng-model="data.realName" ng-disabled="data.status==1 || data.status==2" required>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="请输入身份证号" maxlength="18" name="idCard" value="****{{data.idCard | limitTo:-4}}" ng-disabled="data.status==1 || data.status==2" required>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="请输入公司名称" maxlength="20" name="companyName" ng-model="data.companyName"  ng-disabled="data.status==1 || data.status==2" required>
+            </label>
+        </div>
+        <!-- -->
+        <div class="list margin2">
+            <label class="item item-divider">
+                个人信息
+            </label>
+            <div class="row uploadDemo padding">
+                <div class="col col-50"  ng-if="data.status==1 || data.status==2" ></div>
+                <div class="col col-50"  ng-if="data.status!=1 && data.status!=2"  ng-click="changeIdImage()"></div>
+                <div class="col">
+                    <img ng-src="{{data.imgUrl}}" name="imgUrl" class="imgBlur">
+                </div>
+
+            </div>
+        </div>
+
+            <div style="padding-left:20px;padding-right:20px;">
+                <button class="button button-block button-assertive" ng-disabled="data.status==1" ng-if="data.status==1" ng-click="verifyIdCard()">审核中...</button>
+                <button class="button button-block button-assertive" ng-disabled="data.status==2" ng-if="data.status==2" ng-click="verifyIdCard()">认证成功</button>
+                <button class="button button-block button-assertive" ng-if="data.status==3" ng-click="verifyIdCard()">认证失败，重新提交</button>
+                <button class="button button-block button-assertive" ng-if="data.status!=3 && data.status!=1&&data.status!=2" ng-click="verifyIdCard()">提交认证</button>
+            </div>
+    </ion-content>
+</ion-pane>

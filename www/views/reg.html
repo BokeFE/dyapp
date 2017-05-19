@@ -1,0 +1,49 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="login"></button>
+        <div class="title">注册</div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="regBanner text-center"></div>
+        <!---->
+        <div class="list margin2 icon-red">
+            <label class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-shouji"></i>
+                <input type="tel" placeholder="输入手机号码" maxlength="11" pattern="[0-9]*" name="tel" ng-model="data.tel" required>
+            </label>
+
+            <div class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-duanxin"></i>
+                <input type="tel" placeholder="输入短信验证码" maxlength="4" pattern="[0-9]*" name="msg" ng-model="data.msg" required>
+              <button class="getSmsCode button button-outline button-small" ng-disabled="disabled" ng-bind="paracont"  ng-click="sendValidateCode()">获取验证码
+              </button>
+            </div>
+            <label class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-mima"></i>
+                <input type="password" placeholder="输入6-16位且字母和数字的密码" maxlength="16" name="pwd" ng-model="data.pwd" required>
+            </label>
+            <label class="item item-input">
+                <i class="icon placeholder-icon iconfont icon-yaoqingma"></i>
+                <input type="text" placeholder="输入邀请码，没有可不填" maxlength="16" name="inviteCode" ng-model="data.inviteCode">
+            </label>
+
+            <div style="padding:20px;">
+                <p>
+                    <label class="iconfont icon-22gouxuanduihao  cd-red" style="line-height:24px;" ng-class="{'icon-zhifangkuang':data.access}">
+                        <input type="checkbox" name="access" ng-model="data.access" class="hide" checked="checked">
+                        <span style="color:#666;">我已阅读并同意</span>
+                    </label>
+                    <a ui-sref="agreement" class="cd-red">《注册协议》</a>
+                </p>
+
+                <button class="button button-assertive button-block cd-bgRed"  ng-disabled="data.access || btnDisabled" ng-click="register()">立即注册</button>
+                <div class="row">
+                    <div class="col text-right">
+                        已有账号，<a class="cd-red" ui-sref="login">马上登录</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-pane>

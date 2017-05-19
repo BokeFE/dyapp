@@ -1,0 +1,50 @@
+<ion-pane class="cd-bgGray">
+    <div class="bar bar-header bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.tracking"></button>
+        <div class="title">订单检索</div>
+    </div>
+
+    <ion-content class="has-header scroll-content ionic-scroll" overflow-scroll="true">
+        <!-- -->
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div class="noData" ng-if="!hasData">未搜索到结果</div>
+        <div ng-repeat="row in list" >
+            <div class="item indexGrid icon-red margin2 " ng-click="viewDtl(row)" >
+                <div class="row item-button-right">
+                    <div class="col col-67">
+                        <div class="item-avatar">
+                            <img  src="images/order.png">
+                            <p style="padding-top:15px"><i class="iconfont icon-qiangdanzhong"></i><span>{{row.orderNo}}</span></p>
+                            <p><i class="iconfont icon-suoxucailiao"></i><span>合同号{{row.hetonghao}}</span></p>
+                            <p><i class="iconfont icon-daikuanqixian"></i> <span>{{row.billdate}}</span></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                            <span class="item-note">
+                              <p> </p>
+                            </span>
+                    </div>
+                    <button class="button button-balanced cd-bgRed" ng-click="viewDtl(row)"  style="padding-left:20px;padding-right:20px;" >查看</button>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        托运商
+                        <span>{{row.tuoyunshang}}</span>
+                    </div>
+                    <div class="col">
+                        数量
+                        <span>{{row.wuliao}}</span>
+                    </div>
+                    <div class="col">
+                        数量
+                        <span>{{row.shuliang}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--<ion-infinite-scroll ng-if="!noMoreData"  on-infinite="loadMore()"   distance="1%"></ion-infinite-scroll>-->
+
+    </ion-content>
+</ion-pane>

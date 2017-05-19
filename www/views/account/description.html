@@ -1,0 +1,10 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.myAccount"></button>
+        <div class="title">个人描述</div>
+    </ion-header-bar>
+    <ion-content class="feedback padding2 ">
+        <textarea placeholder="客户会在个人主页上看到你的描述" maxlength="1000" name="content" ng-model="data.content" required></textarea>
+        <button class="button button-block button-assertive" ng-click="description()">提交</button>
+    </ion-content>
+</ion-pane>

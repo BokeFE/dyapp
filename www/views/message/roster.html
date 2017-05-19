@@ -1,0 +1,18 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui" ui-sref="tab.message"></button>
+        <div class="title">联系人</div>
+    </ion-header-bar>
+    <ion-content class="messageList">
+        <div class="noData" ng-if="item.length==0"></div>
+        <ion-list>
+            <ion-item class="item-avatar" ng-repeat="item in rosterList " ng-click="messageDetails(item)">
+                <img src="images/defaultHeader.png">
+                <h2 ng-bind="item.name"></h2>
+                <!--<p class="rj-list-p">-->
+                <!--<span></span>-->
+                <!--</p>-->
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-pane>

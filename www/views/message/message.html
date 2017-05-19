@@ -1,0 +1,21 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <div class="title">消息</div>
+    </ion-header-bar>
+    <ion-content class="margin2 messageList">
+        <ion-list rj-close-back-drop show-delete="shouldShowDelete">
+            <div class="noData" ng-if="sessionList.length==0">暂无消息</div>
+            <ion-item class="item-avatar" ng-repeat="session in sessionList | orderBy:'lastTime':true" ng-click="messageDetails(session)">
+                <img ng-src="{{session.headimage}}">
+                <span class="message-badge" ng-show="session.unRead>0"></span>
+                <h2 ng-bind="session.name"></h2>
+                <p class="rj-list-p">
+                    <span ng-show="session.unRead>0"> [<span ng-bind="session.unRead"></span>条] </span>
+                    <span ng-bind="session.lastMessage"></span>
+                </p>
+                <span class="messageList-time" ng-bind="session.lastTime"></span>
+                <ion-option-button class="button-assertive" ng-click="removeItem(session)">删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-pane>

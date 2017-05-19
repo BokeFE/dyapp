@@ -1,0 +1,149 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui"  ng-click="myGoBack()"></button>
+        <div class="title">任务详情 -- {{curOrder.main.type==1?'部门审批':'物流订单审批'}}</div>
+    </ion-header-bar>
+    <ion-content ng-class="{'has-footer':true}">
+        <!-- -->
+        <div class="item indexGrid icon-red">
+            <div class="row">
+                <div class="col ">
+                    <div class="item-avatar">
+                        <img src="images/transport.png">
+                        <h2> <i class="iconfont icon-zaixianshenqing"></i>订单号 {{curOrder.main.no}}</h2>
+                        <p><i class="iconfont icon-qianshuhetong"></i>合同号 <span>{{curOrder.main.hetonghao}}</span></p>
+                        <p><i class="iconfont icon-daikuanqixian"></i>业务日期 <span>{{curOrder.main.billdate}}</span></p>
+                    </div>
+                </div>
+                <!--<div class="col">-->
+                <!--<span class="item-note">-->
+                <!--<p>{{2017-01-01}}</p>-->
+                <!--<span class="span badge green" >{{ curOrder.main.orderType}}</span>-->
+                <!--</span>-->
+                <!--</div>-->
+            </div>
+
+            <div class="row">
+                <div class="col">
+                  	  货主
+                    <span>{{curOrder.main.huozhu}}</span>
+                </div>
+                <div class="col">
+                    	制单人
+                    <span>{{curOrder.main.zhidanren}}</span>
+                </div>
+                <div class="col">
+                   	 总数量
+                    <span>{{curOrder.main.zongshuliang}}</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- 明细信息-->
+
+        <div class="row" style="margin-top:10px">
+        	<div class="col {{curOrder.orderDtlTab==0?'tactive':''}}" ng-click="dtlTab(0)" style=" text-align: center;border-top: 1px solid #f0efef;">
+                	基本信息
+            </div>
+            <div class="col {{curOrder.orderDtlTab==1?'tactive':''}}" ng-click="dtlTab(1)" style=" text-align: center;border-top: 1px solid #f0efef;">
+                	物料信息
+            </div>
+            <div class="col {{curOrder.orderDtlTab==2?'tactive':''}}" ng-click="dtlTab(2)" style=" text-align: center;border-top: 1px solid #f0efef;border-left: 1px solid #f0efef;">
+               	  装收信息
+            </div>
+        </div>
+
+		  <div ng-if="curOrder.orderDtlTab==0" class="list  loanDetailList">
+		  
+        	<label class="item item-icon-left">
+                	当前状态
+                <span class="item-note text-right"><label>{{curOrder.main.zhuangtai}}</label></span>
+            </label>
+           <label class="item item-icon-left">
+                	接单机构
+                <span class="item-note text-right"><label>{{curOrder.main.org}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                	供应商
+                <span class="item-note text-right"><label>{{curOrder.main.gongyingshang}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                	客户
+                <span class="item-note text-right"><label>{{curOrder.main.wanglaihu}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                	托运商单号
+                <span class="item-note text-right"><label>{{curOrder.main.tuoyunshangdanhao}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                	进出厂类型
+                <span class="item-note text-right"><label>{{curOrder.main.jinchuchangleixing}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                	线路
+                <span class="item-note text-right"><label>{{curOrder.main.xianlu}}</label></span>
+            </label>
+        </div>
+		  
+        <div ng-if="curOrder.orderDtlTab==1" class="list  loanDetailList">
+
+            <label class="item item-icon-left" ng-repeat="row in curOrder.dtl">
+                {{row.wuliao}}
+                <span class="item-note text-right"><label>{{row.shuliang}}{{row.danwei}}</label></span>
+            </label>
+
+        </div>
+
+        <div ng-if="curOrder.orderDtlTab==2" class="list  loanDetailList">
+
+            <label class="item item-icon-left cd-red">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgRed"></i>
+                装货信息
+            </label>
+            <label class="item item-icon-left">
+                装货单位
+                <span class="item-note text-right"><label>{{curOrder.main.zhuanghuomingcheng}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                地址
+                <span class="item-note text-right"><label>{{curOrder.main.zhuanghuoxiangxidizhi}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                联系人
+                <span class="item-note text-right"><label>{{curOrder.main.zhuanghuolianxiren}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                联系电话
+                <span class="item-note text-right"><label>{{curOrder.main.lianxidianhua}}</label></span>
+            </label>
+        </div>
+
+        <div ng-if="curOrder.orderDtlTab==2" class="list margin2 loanDetailList">
+            <label class="item item-icon-left cd-red">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgRed"></i>
+                收货信息
+            </label>
+            <label class="item item-icon-left">
+                收货单位
+                <span class="item-note text-right"><label>{{curOrder.main.shouhuomingcheng}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                地址
+                <span class="item-note text-right"><label>{{curOrder.main.shouhuoxiangxidizhi}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                联系人
+                <span class="item-note text-right"><label>{{curOrder.main.shouhuolianxiren}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                联系电话
+                <span class="item-note text-right"><label>{{curOrder.main.lianxidianhua_1}}</label></span>
+            </label>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer bar-assertive text-center"  ng-disabled="btnDisabled" ng-if="curOrder.main.status<2"  id="qiangdanBtn" ng-click="do()" >
+        <h1 class="title">审批</h1>
+    </div>
+</ion-pane>

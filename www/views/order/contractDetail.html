@@ -1,0 +1,138 @@
+<ion-pane class="cd-bgGray">
+    <ion-header-bar class="bar-cd">
+        <button class="button button-clear button-white iconfont icon-fanhui"  ng-click="myGoBack()"></button>
+        <div class="title">
+            <div class="contractNav">
+                <div class="row">
+                    <div class="col" ng-click="dtlTab(1)"   ng-class="{'curr':activated==1}" >
+                        <i class="iconfont icon-qiangdanzhong"></i>
+                        基本
+                    </div>
+                    <div class="col"  ng-click="dtlTab(2)"  ng-class="{'curr':activated==2}">
+                        <i class="iconfont icon-quanbu"></i>
+                        附件
+                    </div>
+                    <div class="col"  ng-click="dtlTab(3)"  ng-class="{'curr':activated==3}">
+                        <i class="iconfont icon-quanbu"></i>
+                        流程
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content ng-class="{'has-footer':true}">
+        <!-- -->
+    <div  ng-if="activated==1">
+        <div class="list loanDetailList">
+            <label class="item item-icon-left cd-blue">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgBlue"></i>
+               合同信息
+            </label>
+            <label class="item item-icon-left">
+                合同编号
+                <span class="item-note text-right"><label>{{curOrder.basic.HETONGBIAN}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                合同名称
+                <span class="item-note text-right"><label>{{curOrder.basic.HETONGMINGCHENG}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                合同金额
+                <span class="item-note text-right"><label>{{curOrder.basic.HETONGJINE}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                合同类型
+                <span class="item-note text-right"><label>{{curOrder.basic.HETONGLEIXING}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                合同生效日期
+                <span class="item-note text-right"><label>{{curOrder.basic.HETONGSHENGXIAORIQI}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                合同失效日期
+                <span class="item-note text-right"><label>{{curOrder.basic.HETONGSHIXIAORIQI}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                申办日期
+                <span class="item-note text-right"><label>{{curOrder.basic.BILLDATE}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                单据编号
+                <span class="item-note text-right"><label>{{curOrder.basic.NO}}</label></span>
+            </label>
+            </div>
+
+        <!-- 签约信息-->
+        <div  class="list margin2 loanDetailList">
+            <label class="item item-icon-left cd-blue">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgBlue"></i>
+                签约信息
+            </label>
+            <label class="item item-icon-left">
+                签约单位
+                <span class="item-note text-right"><label>{{curOrder.basic.QIANYUEDANWEI}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                联系人                <span class="item-note text-right"><label>{{curOrder.basic.QIANYUEDANWEILIANXIREN}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+               联系电话              <span class="item-note text-right"><label>{{curOrder.basic.QIANYUELIANXIRENDIANHUA}}</label></span>
+            </label>
+        </div>
+
+        <div class="list margin2 loanDetailList">
+            <label class="item item-icon-left cd-blue">
+                <i class="icon iconfont  icon-banlitiaojian icon-badge cd-bgBlue"></i>
+                承办信息
+            </label>
+            <label class="item item-icon-left">
+                承办单位
+                <span class="item-note text-right"><label>{{curOrder.basic.CHENGBANDANWEI}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                单位负责人              <span class="item-note text-right"><label>{{curOrder.basic.CHENGBANDANWEIFUZEREN}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                合同承办人               <span class="item-note text-right"><label>{{curOrder.basic.HETONGCHENGBANREN}}</label></span>
+            </label>
+            <label class="item item-icon-left">
+                联系电话              <span class="item-note text-right"><label>{{curOrder.basic.DIANHUAHAOMA}}</label></span>
+            </label>
+            <label class="item item-icon-left" style="margin-bottom:20px">
+                审批人              <span class="item-note text-right"><label>{{curOrder.basic.SHENPIREN}}
+                &nbsp; <button class="button button-small button-positive" style="width:80px;text-align:center" ng-if="canChangeSPR" ng-click="changeSPR()">修改</button></label>
+                </span>
+            </label>
+        </div>
+    </div>
+
+        <div ng-if="activated==2" >
+            <div class="list ">
+                <div class="item item-icon-left item-icon-right " ng-click="viewFile(row,$event)" ng-repeat="row in curOrder.files" >
+                    <i class="icon ion-document-text cd-red"></i>
+                    <span >{{row.FILENAME}}</span>
+                    <i class="icon font-blue ion-ios-arrow-right iconRight" ></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日志-->
+        <div ng-if="activated==3" >
+            <div class="noData"  ng-if="curOrder.workflow.length==0">暂无流程日志</div>
+            <div class="item indexGrid " ng-repeat="row in curOrder.workflow"  >
+                <div class="item item-icon-right" >
+                    {{$index+1}}、{{row.WORKITEMDESC}}
+                    <span ng-if="row.WORKITEMDESC!='结束'" class="auditUser">({{row.USERNAME}})</span>
+                    <i ng-if="row.RESULTINFO=='通过'" class="icon ion-ios-checkmark-empty cd-blue"></i>
+                    <i ng-if="row.RESULTINFO=='不通过'" class="icon ion-ios-close-empty cd-red"></i>
+                    <p style="padding-top:5px;padding-left: 22px"><span ng-if="row.USERINFO!=''">审批意见：</span>{{row.USERINFO}}</p>
+                    <p style="padding-top:5px;padding-left: 22px">{{row.CREATETIME}}</p>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer bar-assertive text-center"    ng-disabled="btnDisabled" ng-click="submit()" >
+        <h1 class="title" style="color:#fff">审批</h1>
+    </div>
+</ion-pane>
